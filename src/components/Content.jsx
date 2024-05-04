@@ -18,28 +18,9 @@ const Content = ({ onSidebarHide }) => {
             </div>
             <div className=" h-screen flex-grow overflow-x-hidden overflow-auto flex flex-wrap content-start p-2">
                 <NavBar onSideBarHide={onSidebarHide} />
-                {employeeData.map(
-                    ({
-                        id,
-                        name,
-                        position,
-                        transactions,
-                        rise,
-                        tasksCompleted,
-                        imgId,
-                    }) => (
-                        <NameCard
-                            key={id}
-                            id={id}
-                            name={name}
-                            position={position}
-                            transactionAmount={transactions}
-                            rise={rise}
-                            tasksCompleted={tasksCompleted}
-                            imgId={imgId}
-                        />
-                    ),
-                )}
+                
+                        <NameCard/>
+                
 
                 <div className="w-full p-2 lg:w-2/3">
                     <div className="rounded-lg bg-card sm:h-80 h-60">

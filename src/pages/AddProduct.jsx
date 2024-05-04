@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import clsx from "https://cdn.skypack.dev/clsx@1.1.1";
+import clsx from 'clsx';
 import Content from '../components/Content';
 import SideBar from '../components/SideBar';
 import ProductAdd from '../components/ProductAdd';

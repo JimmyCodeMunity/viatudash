@@ -8,7 +8,7 @@ import { IconButton } from './IconButton';
 import { sidebarItems } from '../constants';
 
 const SideBar = ({ onSidebarHide, showSidebar }) => {
-    console.log("sidebar state",showSidebar)
+    // console.log("sidebar state",showSidebar)
     const [selected, setSelected] = useState('0');
     const { dashOffset, indicatorWidth, precentage } = useSpring({
         dashOffset: 26.015,

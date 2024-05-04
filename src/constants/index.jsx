@@ -61,8 +61,13 @@ export const sidebarItems = [
     [
         { id: '0', title: 'Dashboard', notifications: false,link:'/' },
         { id: '1', title: 'Add Product', notifications: false,link:'/addproduct' },
-        { id: '2', title: 'Chat', notifications: 6 },
-        { id: '3', title: 'Team', notifications: false },
+        { id: '2', title: 'Add User', notifications: false,link:'/adduser' },
+        { id: '3', title: 'Add Staff', notifications: false,link:'/addstaff' },
+        { id: '4', title: 'Chat', notifications: 6 },
+        { id: '5', title: 'Team', notifications: false },
+        { id: '6', title: 'All Users', notifications: false,link:'/users' },
+        { id: '7', title: 'All Staff', notifications: false,link:'/staffs' },
+        { id: '8', title: 'All Products', notifications: false,link:'/products' },
     ],
     [
         { id: '4', title: 'Tasks', notifications: false },
