@@ -2,15 +2,16 @@ import React from 'react';
 import { Icon } from './Icon';
 import { IconButton } from './IconButton';
 
-const NavBar = ({onSidebarHide}) => {
+const NavBar = ({ onSidebarHide }) => {
     console.log("navbar sidestate", onSidebarHide);
+    const username = localStorage.getItem('user');
     return (
         <div className="w-full sm:flex p-2 items-end">
             <div className="sm:flex-grow flex justify-between">
                 <div className="">
                     <div className="flex items-center">
-                        <div className="text-3xl font-bold text-white">Hello Odari</div>
-                        
+                        <div className="text-3xl font-bold text-white">{username}</div>
+
                     </div>
                     <div className="flex items-center">
                         <Icon

@@ -2,6 +2,8 @@ import { useSpring, animated } from "react-spring";
 import { Image } from "./Image";
 import { Icon } from "./Icon";
 import clsx from 'clsx';
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 export const NameCard = ({
   name,
@@ -10,12 +12,44 @@ export const NameCard = ({
   rise,
   tasksCompleted,
   imgId,
+  token
 }) => {
   const { transactions, barPlayhead } = useSpring({
     transactions: transactionAmount,
     barPlayhead: 1,
     from: { transactions: 0, barPlayhead: 0 },
   });
+
+  const [product, setProduct] = useState(0)
+  const [user, setUser] = useState(0)
+
+  const getTotalProducts = async () => {
+    try {
+      const response = await axios.get('http://localhost:5000/api/v2/product/allproducts');
+      setProduct(response.data.length);
+      // console.log("productcount", response.data.length);
+
+    } catch (error) {
+      console.log(error)
+
+    }
+  }
+  const getTotalStaff = async () => {
+    try {
+      const response = await axios.get('http://localhost:5000/api/v2/user/allusers');
+      setUser(response.data.length);
+      // console.log("staffcount", response.data.length);
+
+    } catch (error) {
+      console.log(error)
+
+    }
+  }
+
+  useEffect(() => {
+    getTotalProducts();
+    getTotalStaff();
+  }, [])
   return (
     <div className="flex-grow overflow-x-hidden overflow-auto flex flex-wrap content-start p-2">
       <div className="w-full p-2 lg:w-1/3">
@@ -25,7 +59,7 @@ export const NameCard = ({
               <Image path={`mock_faces_${imgId}`} className="w-10 h-10" />
               <div className="ml-2">
                 <div className="flex items-center">
-                  <div className="mr-2 font-bold text-white">Tasks Completed</div>
+                  <div className="mr-2 font-bold text-white">Tasks {token}</div>
                   <Icon path="res-react-dash-tick" />
                 </div>
                 <div className="text-sm ">500</div>
@@ -67,11 +101,7 @@ export const NameCard = ({
               className="w-8 h-8"
             />
             <animated.div
-              className={clsx(
-                rise ? 'text-green-500' : 'text-red-500',
-                'font-bold',
-                'text-lg',
-              )}
+            className="text-green-500 text-lg font-bold"
             >
               {transactions.interpolate((i) => `$${i.toFixed(2)}`)}
             </animated.div>
@@ -124,17 +154,13 @@ export const NameCard = ({
           </div>
           <div className="flex flex-col items-center">
             <Icon
-              path={rise ? 'res-react-dash-bull' : 'res-react-dash-bear'}
+              path='res-react-dash-bear'
               className="w-8 h-8"
             />
             <animated.div
-              className={clsx(
-                rise ? 'text-green-500' : 'text-red-500',
-                'font-bold',
-                'text-lg',
-              )}
+              className="text-green-500 text-lg font-bold"
             >
-              {transactions.interpolate((i) => `$${i.toFixed(2)}`)}
+              {transactions.interpolate((i) => `${product}`)}
             </animated.div>
             <div className="text-sm ">Last 6 month</div>
           </div>
@@ -189,13 +215,9 @@ export const NameCard = ({
               className="w-8 h-8"
             />
             <animated.div
-              className={clsx(
-                rise ? 'text-green-500' : 'text-red-500',
-                'font-bold',
-                'text-lg',
-              )}
+            className="text-green-500 text-lg font-bold"
             >
-              {transactions.interpolate((i) => `$${i.toFixed(2)}`)}
+              {transactions.interpolate((i) => `${user}`)}
             </animated.div>
             <div className="text-sm ">Last 6 month</div>
           </div>

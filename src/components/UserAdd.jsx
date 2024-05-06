@@ -26,7 +26,7 @@ const UserAdd = ({ onSidebarHide }) => {
                 
                 <div className="w-full p-2 lg:w-80 flex-1 justify-center">
                     <div className="rounded-lg bg-card overflow-hidden">
-                        <StaffAddForm />
+                        <AddUser />
                     </div>
                 </div>
             </div>

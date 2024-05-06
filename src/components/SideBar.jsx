@@ -8,6 +8,7 @@ import { IconButton } from './IconButton';
 import { sidebarItems } from '../constants';
 
 const SideBar = ({ onSidebarHide, showSidebar }) => {
+    const username = localStorage.getItem('user');
     // console.log("sidebar state",showSidebar)
     const [selected, setSelected] = useState('0');
     const { dashOffset, indicatorWidth, precentage } = useSpring({
@@ -145,19 +146,7 @@ const SideBar = ({ onSidebarHide, showSidebar }) => {
                 </div>
             </div>
 
-            <div className="flex-shrink-0 overflow-hidden p-2">
-                <div className="flex items-center h-full sm:justify-center xl:justify-start p-2 sidebar-separator-bottom">
-                    <Image path="mock_faces_8" className="w-10 h-10" />
-                    <div className="block sm:hidden xl:block ml-2 font-bold ">
-                        Jerry Wilson
-                    </div>
-                    <div className="flex-grow block sm:hidden xl:block" />
-                    <Icon
-                        path="res-react-dash-options"
-                        className="block sm:hidden xl:block w-3 h-3"
-                    />
-                </div>
-            </div>
+            
         </div>
     );
 }
