@@ -32,7 +32,7 @@ const AddUser = () => {
         formData.append('address', address);
 
         try {
-            const response = await axios.post('https://viatuback.vercel.app/api/v2/user/createuser', formData);
+            const response = await axios.post('http://localhost:5000/api/v2/user/createuser', formData);
             // console.log(response);
             console.log("User added successfully");
             toast.success('User added successfully');
